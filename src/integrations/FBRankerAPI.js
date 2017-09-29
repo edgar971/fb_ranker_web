@@ -27,7 +27,8 @@ class FBRankerAPI {
     }
 
     addGroup(group) {
-        return this.client.post('/groups', group);
+        console.log("Pino");
+        return this.client.post('/groups', {group});
     }
 
     search(query) {
@@ -37,4 +38,4 @@ class FBRankerAPI {
 
 }
 
-export default new FbRankerAPI();
+export default new FBRankerAPI();

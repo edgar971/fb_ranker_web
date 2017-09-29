@@ -20,7 +20,6 @@ class App extends Component {
         // fetchData({funcName: 'admin', stateName: 'auth'});
         this.getClientWidth();
         window.onresize = () => {
-            console.log('屏幕变化了');
             this.getClientWidth();
             // console.log(document.body.clientWidth);
         }
@@ -28,7 +27,7 @@ class App extends Component {
     getClientWidth = () => {    // 获取当前浏览器宽度并设置responsive管理响应式
         const { receiveData } = this.props;
         const clientWidth = document.body.clientWidth;
-        console.log(clientWidth);
+        // console.log(clientWidth);
         receiveData({isMobile: clientWidth <= 992}, 'responsive');
     };
     toggle = () => {
@@ -37,8 +36,8 @@ class App extends Component {
         });
     };
     render() {
-        console.log(this.props.auth);
-        console.log(this.props.responsive);
+        // console.log(this.props.auth);
+        // console.log(this.props.responsive);
         const { auth, router, responsive } = this.props;
         return (
             <Layout className="ant-layout-has-sider">
@@ -49,7 +48,7 @@ class App extends Component {
                   {this.props.children}
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>
-                  React-Admin ©2017 Created by 865470087@qq.com
+                  Facebook Ranker @ 2017
                 </Footer>
               </Layout>
                 {

@@ -8,7 +8,7 @@ const columns = [
     { title: 'Name', dataIndex: 'name', key: 'name' },
     { title: 'Age', dataIndex: 'age', key: 'age' },
     { title: 'Address', dataIndex: 'address', key: 'address' },
-    { title: 'Action', dataIndex: '', key: 'x', render: () => <a>Delete</a> },
+    { title: 'Action', dataIndex: '', key: 'x', render: () => <a>View</a> },
 ];
 
 const data = [
@@ -17,7 +17,7 @@ const data = [
     { key: 3, name: 'Joe Black', age: 32, address: 'Sidney No. 1 Lake Park', description: 'My name is Joe Black, I am 32 years old, living in Sidney No. 1 Lake Park.' },
 ];
 
-const ExpandedTable = () => (
+const ExpandedTable = ({groups}) => (
     <Table
         columns={columns}
         expandedRowRender={record => <p>{record.description}</p>}

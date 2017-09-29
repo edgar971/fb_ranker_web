@@ -9,18 +9,21 @@ import { createStore, applyMiddleware } from 'redux';
 import reducer from './reducer';
 
 import CRouter from './routes';
+import { LocaleProvider } from 'antd';
+import enUS from 'antd/lib/locale-provider/en_US';
 
-
-// redux 注入操作
 const middleware = [thunk];
 const store = createStore(reducer, applyMiddleware(...middleware));
-console.log(store.getState());
+store.getState();
 
 ReactDOM.render(
-    <Provider store={store}>
-        <CRouter store={store} />
-    </Provider>
+    <LocaleProvider locale={enUS}>
+        <Provider store={store}>
+            <CRouter store={store} />
+        </Provider>
+    </LocaleProvider>
  ,
   document.getElementById('root')
 );
+
 registerServiceWorker();

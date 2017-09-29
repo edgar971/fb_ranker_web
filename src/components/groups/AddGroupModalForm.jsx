@@ -3,41 +3,31 @@
  */
 
 import React, { Component } from 'react';
-import { Button, Modal, Form, Input, Radio } from 'antd';
+import { Button, Modal, Form, Input } from 'antd';
 const FormItem = Form.Item;
 
-const CollectionCreateForm = Form.create()(
+const AddGroupModalForm = Form.create()(
     (props) => {
         const { visible, onCancel, onCreate, form } = props;
         const { getFieldDecorator } = form;
         return (
             <Modal
                 visible={visible}
-                title="创建新收藏"
-                okText="创建"
+                title="Create a new Group"
+                okText="Create"
                 onCancel={onCancel}
                 onOk={onCreate}
             >
                 <Form layout="vertical">
-                    <FormItem label="标题">
-                        {getFieldDecorator('title', {
-                            rules: [{ required: true, message: '请输入收藏的标题!' }],
+                    <FormItem label="Name">
+                        {getFieldDecorator('name', {
+                            rules: [{ required: true, message: 'Name is required'}],
                         })(
                             <Input />
                         )}
                     </FormItem>
-                    <FormItem label="描述">
+                    <FormItem label="Description">
                         {getFieldDecorator('description')(<Input type="textarea" />)}
-                    </FormItem>
-                    <FormItem className="collection-create-form_last-form-item" style={{marginBottom: 0}}>
-                        {getFieldDecorator('modifier', {
-                            initialValue: 'public',
-                        })(
-                            <Radio.Group>
-                                <Radio value="public">公开</Radio>
-                                <Radio value="private">私有</Radio>
-                            </Radio.Group>
-                        )}
                     </FormItem>
                 </Form>
             </Modal>
@@ -45,10 +35,18 @@ const CollectionCreateForm = Form.create()(
     }
 );
 
-class ModalForm extends Component {
-    state = {
-        visible: false,
-    };
+class AddGroup extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            visible: false,
+        };
+
+        this.addGroup = this.props.addGroup;
+        this.loadGroups = this.props.loadGroups;
+    }
+
     showModal = () => {
         this.setState({ visible: true });
     };
@@ -61,10 +59,12 @@ class ModalForm extends Component {
             if (err) {
                 return;
             }
+            this.addGroup(values).then(() => {
+                form.resetFields();
+                this.loadGroups();
+                this.setState({ visible: false });
+            });
 
-            console.log('Received values of form: ', values);
-            form.resetFields();
-            this.setState({ visible: false });
         });
     };
     saveFormRef = (form) => {
@@ -73,8 +73,8 @@ class ModalForm extends Component {
     render() {
         return (
             <div>
-                <Button type="primary" onClick={this.showModal}>新建收藏</Button>
-                <CollectionCreateForm
+                <Button type="primary" onClick={this.showModal}>Add Group</Button>
+                <AddGroupModalForm
                     ref={this.saveFormRef}
                     visible={this.state.visible}
                     onCancel={this.handleCancel}
@@ -85,4 +85,4 @@ class ModalForm extends Component {
     }
 }
 
-export default ModalForm;
+export default AddGroup;

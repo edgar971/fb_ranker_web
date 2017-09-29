@@ -1,6 +1,6 @@
 import * as types from './types';
 import {startAjaxCall, ajaxCallError} from './ajaxStatusActions';
-import FbRankerAPI from '../integrations/FbRankerAPI';
+import FBRankerAPI from '../integrations/FBRankerAPI';
 
 
 export function loadGroupsSuccess(groups) {
@@ -48,7 +48,7 @@ export function groupInProcessError() {
 export function loadGroups() {
     return function (dispatch, getState) {
         dispatch(startAjaxCall());
-        return FbRankerAPI.getGroups().then(res => {
+        return FBRankerAPI.getGroups().then(res => {
             let groups = res.data.data;
             dispatch(loadGroupsSuccess(groups));
         }).catch(error => {
@@ -61,7 +61,7 @@ export function loadGroups() {
 export function loadGroup(id) {
     return function (dispatch, getState) {
         dispatch(startAjaxCall());
-        return FbRankerAPI.getGroup(id).then(res => {
+        return FBRankerAPI.getGroup(id).then(res => {
             const group = res.data.data;
             dispatch(loadGroupSuccess(group));
         }).catch(error => {
@@ -74,7 +74,7 @@ export function loadGroup(id) {
 export function loadGroupPages(id) {
     return function (dispatch, getState) {
         dispatch(startAjaxCall());
-        return FbRankerAPI.getGroupPages(id).then(res => {
+        return FBRankerAPI.getGroupPages(id).then(res => {
            const pages = res.data.data;
            dispatch(loadGroupPagesSuccess(pages));
         }).catch(error => {
@@ -87,7 +87,7 @@ export function loadGroupPages(id) {
 export function addGroup(group){
     return function(dispatch, getState) {
         dispatch(startAjaxCall());
-        return FbRankerAPI.addGroup(group).then(() => {
+        return FBRankerAPI.addGroup(group).then(() => {
             dispatch(addedGroupSuccess());
         }).catch(error => {
             dispatch(ajaxCallError(error));
