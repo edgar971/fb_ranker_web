@@ -27,7 +27,6 @@ class FBRankerAPI {
     }
 
     addGroup(group) {
-        console.log("Pino");
         return this.client.post('/groups', {group});
     }
 
