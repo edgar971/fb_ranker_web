@@ -3,6 +3,7 @@ import * as type from '../action/type';
 import groups from "./groupsReducer"
 import group from "./groupReducer"
 import ajaxCallsInProgress from './ajaxStatusReducer';
+import pages from './searchReducer';
 
 const handleData = (state = {isFetching: true, data: {}}, action) => {
     switch (action.type) {
@@ -31,5 +32,6 @@ export default combineReducers({
     httpData,
     groups,
     group,
+    pages,
     ajaxCallsInProgress
 });

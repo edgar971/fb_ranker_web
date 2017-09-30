@@ -19,6 +19,7 @@ import Banners from '../components/ui/banners';
 import Drags from '../components/ui/Draggable';
 import Dashboard from '../components/dashboard/Dashboard';
 import Group from '../components/groups/Group';
+import ManagePages from '../components/fb_pages/ManagePages';
 import Gallery from '../components/ui/Gallery';
 import NotFound from '../components/pages/NotFound';
 import BasicAnimations from '../components/animation/BasicAnimations';
@@ -75,6 +76,7 @@ export default class CRouter extends Component {
                         </Route>
                         <Route path={'dashboard/index'} component={Dashboard} />
                         <Route path={'dashboard/groups/:groupId'} component={Group} />
+                        <Route path={'dashboard/groups/:groupId/manage'} component={ManagePages} />
                         <Route path="auth">
                             <Route path="basic" component={AuthBasic} />
                             <Route path="routerEnter" component={(props) => this.requireAuth('auth/testPage', <RouterEnter {...props} />)} />

@@ -8,8 +8,14 @@ import * as groupActions from '../../action/groupActions';
 import AddGroupModalForm from '../groups/AddGroupModalForm';
 
 class Dashboard extends React.Component {
+    state = {
+        loading: true
+    };
+
     componentWillMount() {
-        this.props.actions.loadGroups();
+        this.props.actions.loadGroups().then(() => {
+           this.setState({ loading: false });
+        });
     }
     render() {
         return (
@@ -18,7 +24,7 @@ class Dashboard extends React.Component {
                 <Row gutter={16}>
                     <Col className="gutter-row" md={24}>
                         <div className="gutter-box">
-                            <Card title="Groups" bordered={false}>
+                            <Card title="Groups" bordered={false} loading={this.state.loading}>
                                 <AddGroupModalForm addGroup={this.props.actions.addGroup} loadGroups={this.props.actions.loadGroups} />
                                 <GroupsTable groups={this.props.groups} />
                             </Card>

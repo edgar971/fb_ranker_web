@@ -24,6 +24,12 @@ export function loadGroupPagesSuccess(pages) {
     }
 }
 
+export function attachPageToGroupSuccess() {
+    return {
+        type: types.ATTACH_PAGE_TO_GROUP_SUCCESS
+    }
+}
+
 export function addedGroupSuccess() {
 
     return {
@@ -80,6 +86,27 @@ export function loadGroupPages(id) {
         }).catch(error => {
             dispatch(ajaxCallError(error));
             throw(error);
+        });
+    }
+}
+
+export function attachPageToGroup(groupId, pageId) {
+    return function (dispatch, getState) {
+        dispatch(startAjaxCall());
+        return FBRankerAPI.addPage(pageId).then(res => {
+            return FBRankerAPI.attachPageToGroup(groupId, pageId).then(res => {
+                dispatch(attachPageToGroupSuccess());
+            }).catch(error => {
+                    dispatch(ajaxCallError(error));
+                    throw(error);
+                });
+        }).catch(() => {
+            return FBRankerAPI.attachPageToGroup(groupId, pageId).then(res => {
+                dispatch(attachPageToGroupSuccess());
+            }).catch(error => {
+                dispatch(ajaxCallError(error));
+                throw(error);
+            });
         });
     }
 }

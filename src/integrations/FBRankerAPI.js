@@ -26,12 +26,36 @@ class FBRankerAPI {
         return this.client.get('/groups/' + id + '/pages');
     }
 
+    /**
+     *
+     * @param group
+     * @returns {*|AxiosPromise}
+     */
     addGroup(group) {
         return this.client.post('/groups', {group});
     }
 
+    /**
+     *
+     * @param pageId
+     * @returns {*|AxiosPromise}
+     */
+    addPage(pageId) {
+        return this.client.post('/pages', {page_id: pageId});
+    }
+
+    /**
+     *
+     * @param groupId
+     * @param pageId
+     * @returns {*|AxiosPromise}
+     */
+    attachPageToGroup(groupId, pageId) {
+        return this.client.post(`/groups/${groupId}/pages`, {page: pageId});
+    }
+
     search(query) {
-        return this.client.get('api/pages/search', {query})
+        return this.client.get('/pages/search', {params: {query}})
     }
 
 
