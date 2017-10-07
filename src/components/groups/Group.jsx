@@ -6,7 +6,7 @@ import { Tabs } from 'antd';
 import { Button } from 'antd';
 
 import BreadcrumbCustom from '../BreadcrumbCustom';
-import {loadGroup} from '../../action/groupActions';
+import {loadGroup, loadGroupPostReport} from '../../action/groupActions';
 import GroupPostRankTable from './GroupPostRankTable';
 
 const TabPane = Tabs.TabPane;
@@ -24,6 +24,8 @@ class Group extends Component {
         this.props.actions.loadGroup(groupId).then(() => {
             this.setState({loading: false});
         });
+
+        this.props.actions.loadGroupPostReport(groupId);
     }
 
     goToManagePage = () => {
@@ -45,7 +47,7 @@ class Group extends Component {
 
                                 <Tabs defaultActiveKey="1">
                                     <TabPane tab="Top Post" key="1">
-                                        <GroupPostRankTable />
+                                        <GroupPostRankTable report={this.props.group.posts_report} />
                                     </TabPane>
                                     <TabPane tab="New Fans" key="2">
                                         <GroupPostRankTable />
@@ -71,7 +73,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators({loadGroup}, dispatch)
+        actions: bindActionCreators({loadGroup, loadGroupPostReport}, dispatch)
     }
 }
 

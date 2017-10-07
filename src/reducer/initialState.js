@@ -4,7 +4,8 @@ export default {
     group: {
         name: "Loading...",
         description: "Loading...",
-        pages: []
+        pages: [],
+        posts_report: []
     },
     group_in_process: false,
     numAjaxCallsInProgress: 0

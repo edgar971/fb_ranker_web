@@ -2,7 +2,7 @@ import axios from "axios"
 
 class FBRankerAPI {
 
-    constructor(url = "https://immense-hamlet-15325.herokuapp.com/api") {
+    constructor(url = "http://localhost:4000/api") {
 
         this.client = this.createClient(url);
 
@@ -24,6 +24,10 @@ class FBRankerAPI {
 
     getGroupPages(id) {
         return this.client.get('/groups/' + id + '/pages');
+    }
+
+    getGroupPostReport(id) {
+        return this.client.get('/groups/' + id + '/reports/posts');
     }
 
     /**

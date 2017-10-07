@@ -2,7 +2,7 @@ import React from 'react';
 import { Table } from 'antd';
 
 
-const GroupPostRankTable = () => {
+const GroupPostRankTable = ({report}) => {
 
     const columns = [
         {
@@ -13,7 +13,7 @@ const GroupPostRankTable = () => {
         },
         { title: 'Page', dataIndex: 'name', key: 'name' },
         { title: 'Post Type', dataIndex: 'type', key: 'type' },
-        { title: 'Text', dataIndex: 'content', key: 'content' },
+        { title: 'Text', dataIndex: 'message', key: 'message', width: "30%" },
         {
             title: 'Likes',
             dataIndex: 'likes',
@@ -37,21 +37,22 @@ const GroupPostRankTable = () => {
 
     const data = [];
 
-
-    for (let i = 0; i < 50; i ++) {
-        const item = {
-            id: i,
-            rank: 1 + i,
-            name: "Festival",
-            type: "video",
-            content: "Thank you everyone for a great day!",
-            likes: 210 - i,
-            comments: 123 - i,
-            shares: 65 - i
-        };
-
-        data.push(item);
-    }
+    report.forEach(page => {
+        if(!page.posts.data) {
+            return;
+        }
+        page.posts.data.forEach(post => {
+            data.push({
+                id: post.id,
+                name: page.name,
+                type: "post",
+                likes: post.likes,
+                message: post.message,
+                comments: post.comments,
+                shares: post.shares
+            });
+        })
+    });
 
     return (
         <Table

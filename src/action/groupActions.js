@@ -24,6 +24,13 @@ export function loadGroupPagesSuccess(pages) {
     }
 }
 
+export function loadGroupPostsReportSuccess(report) {
+    return {
+        type: types.LOAD_GROUP_POSTS_REPORT_SUCCESS,
+        report
+    }
+}
+
 export function attachPageToGroupSuccess() {
     return {
         type: types.ATTACH_PAGE_TO_GROUP_SUCCESS
@@ -83,6 +90,19 @@ export function loadGroupPages(id) {
         return FBRankerAPI.getGroupPages(id).then(res => {
            const pages = res.data.data;
            dispatch(loadGroupPagesSuccess(pages));
+        }).catch(error => {
+            dispatch(ajaxCallError(error));
+            throw(error);
+        });
+    }
+}
+
+export function loadGroupPostReport(id) {
+    return function (dispatch, getState) {
+        dispatch(startAjaxCall());
+        return FBRankerAPI.getGroupPostReport(id).then(res => {
+            const report = res.data.data;
+            dispatch(loadGroupPostsReportSuccess(report));
         }).catch(error => {
             dispatch(ajaxCallError(error));
             throw(error);
