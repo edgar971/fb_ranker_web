@@ -5,15 +5,9 @@ import { Table } from 'antd';
 const GroupPostRankTable = ({report}) => {
 
     const columns = [
-        {
-            title: 'Rank',
-            dataIndex: 'rank',
-            key: 'rank',
-            sorter: (a, b) => a.rank - b.rank,
-        },
         { title: 'Page', dataIndex: 'name', key: 'name' },
         { title: 'Post Type', dataIndex: 'type', key: 'type' },
-        { title: 'Text', dataIndex: 'message', key: 'message', width: "30%" },
+        { title: 'Text', dataIndex: 'message', key: 'message', width: "40%" },
         {
             title: 'Likes',
             dataIndex: 'likes',

@@ -50,10 +50,10 @@ class Group extends Component {
                                         <GroupPostRankTable report={this.props.group.posts_report} />
                                     </TabPane>
                                     <TabPane tab="New Fans" key="2">
-                                        <GroupPostRankTable />
+                                        <h2>Coming Soon</h2>
                                     </TabPane>
                                     <TabPane tab="Posting Strategy" key="3">
-                                        <GroupPostRankTable />
+                                        <h2>Coming Soon</h2>
                                     </TabPane>
                                 </Tabs>
                             </Card>
