@@ -27,7 +27,7 @@ import ExampleAnimations from '../components/animation/ExampleAnimations';
 import AuthBasic from '../components/auth/Basic';
 import RouterEnter from '../components/auth/RouterEnter';
 
-const Wysiwyg = (location, cb) => {     // 按需加载富文本配置
+const Wysiwyg = (location, cb) => {
     require.ensure([], require => {
         cb(null, require('../components/ui/Wysiwyg').default);
     }, 'Wysiwyg');

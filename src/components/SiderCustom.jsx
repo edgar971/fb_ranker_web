@@ -1,6 +1,3 @@
-/**
- * Created by hao.cheng on 2017/4/13.
- */
 import React, { Component } from 'react';
 import { Layout, Menu, Icon } from 'antd';
 import { Link } from 'react-router';
@@ -12,7 +9,7 @@ class SiderCustom extends Component {
         mode: 'inline',
         openKey: '',
         selectedKey: '',
-        firstHide: true,        // 点击收缩菜单，第一次隐藏展开子菜单，openMenu时恢复
+        firstHide: true,
     };
     componentDidMount() {
         this.setMenuOpen(this.props);
@@ -23,7 +20,7 @@ class SiderCustom extends Component {
         this.setMenuOpen(nextProps)
     }
     setMenuOpen = props => {
-        const {path} = props;
+        const { path } = props;
         this.setState({
             openKey: path.substr(0, path.lastIndexOf('/')),
             selectedKey: path
@@ -55,9 +52,10 @@ class SiderCustom extends Component {
                 trigger={null}
                 breakpoint="lg"
                 collapsed={this.props.collapsed}
-                style={{overflowY: 'auto'}}
+                style={{ overflowY: 'auto' }}
             >
                 <div className="logo">
+                    <h1>LOGO</h1>
                 </div>
                 <Menu
                     onClick={this.menuClick}

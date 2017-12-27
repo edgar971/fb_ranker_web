@@ -1,8 +1,8 @@
-import axios from "axios"
+import axios from 'axios'
 
 class FBRankerAPI {
 
-    constructor(url = "http://localhost:4000/api") {
+    constructor(url = 'http://localhost:4000/api') {
 
         this.client = this.createClient(url);
 
@@ -30,30 +30,14 @@ class FBRankerAPI {
         return this.client.get('/groups/' + id + '/reports/posts');
     }
 
-    /**
-     *
-     * @param group
-     * @returns {*|AxiosPromise}
-     */
     addGroup(group) {
         return this.client.post('/groups', {group});
     }
 
-    /**
-     *
-     * @param pageId
-     * @returns {*|AxiosPromise}
-     */
     addPage(pageId) {
         return this.client.post('/pages', {page_id: pageId});
     }
 
-    /**
-     *
-     * @param groupId
-     * @param pageId
-     * @returns {*|AxiosPromise}
-     */
     attachPageToGroup(groupId, pageId) {
         return this.client.post(`/groups/${groupId}/pages`, {page: pageId});
     }

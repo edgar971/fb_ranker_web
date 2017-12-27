@@ -8,9 +8,7 @@ import { pageSearch } from '../../action/pageActions';
 import ManagePagesTable from './ManagePagesTable';
 import PageSearch from './PageSearch';
 
-
 class ManagePages extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -28,7 +26,6 @@ class ManagePages extends Component {
         this.props.actions.loadGroupPages(groupId).then(() => {
             this.setState({loading: false});
         });
-
     }
 
     onPageSearchSelect(pageId) {
