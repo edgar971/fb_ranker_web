@@ -16,18 +16,14 @@ class App extends Component {
         const { receiveData } = this.props;
         const user = JSON.parse(localStorage.getItem('user'));
         user && receiveData(user, 'auth');
-        // receiveData({a: 213}, 'auth');
-        // fetchData({funcName: 'admin', stateName: 'auth'});
         this.getClientWidth();
         window.onresize = () => {
             this.getClientWidth();
-            // console.log(document.body.clientWidth);
         }
     }
-    getClientWidth = () => {    // 获取当前浏览器宽度并设置responsive管理响应式
+    getClientWidth = () => {    
         const { receiveData } = this.props;
         const clientWidth = document.body.clientWidth;
-        // console.log(clientWidth);
         receiveData({isMobile: clientWidth <= 992}, 'responsive');
     };
     toggle = () => {
@@ -36,8 +32,6 @@ class App extends Component {
         });
     };
     render() {
-        // console.log(this.props.auth);
-        // console.log(this.props.responsive);
         const { auth, router, responsive } = this.props;
         return (
             <Layout className="ant-layout-has-sider">
@@ -52,7 +46,7 @@ class App extends Component {
                 </Footer>
               </Layout>
                 {
-                    responsive.data.isMobile && (   // 手机端对滚动很慢的处理
+                    responsive.data.isMobile && (   
                         <style>
                         {`
                             #root{

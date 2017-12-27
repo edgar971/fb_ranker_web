@@ -2,7 +2,6 @@ import * as types from './types';
 import {startAjaxCall, ajaxCallError} from './ajaxStatusActions';
 import FBRankerAPI from '../integrations/FBRankerAPI';
 
-
 export function loadGroupsSuccess(groups) {
     return {
         type: types.LOAD_GROUPS_SUCCESS,
@@ -38,18 +37,15 @@ export function attachPageToGroupSuccess() {
 }
 
 export function addedGroupSuccess() {
-
     return {
         type: types.ADDED_GROUP_SUCCESS
     }
 }
 
 export function groupInProcessSuccess() {
-
     return {
         type: types.PROCESSED_GROUP_SUCCESS
     }
-
 }
 
 export function groupInProcessError() {
