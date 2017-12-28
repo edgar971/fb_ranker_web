@@ -1,11 +1,8 @@
-/**
- * Created by hao.cheng on 2017/4/16.
- */
 import React from 'react';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchData, receiveData } from '@/action';
+import { fetchData, receiveData } from '@/actions';
 
 const FormItem = Form.Item;
 

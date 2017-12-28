@@ -1,4 +1,4 @@
-import * as types from '../action/types';
+import * as types from '../actions/types';
 import initialState from './initialState';
 
 function actionTypeEndsInSuccess(type) {

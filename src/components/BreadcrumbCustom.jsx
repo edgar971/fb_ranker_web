@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Breadcrumb, Switch } from 'antd';
-import { Link } from 'react-router';
-import themes from '../style/theme';
+import React, { Component } from 'react'
+import { Breadcrumb } from 'antd'
+import { Link } from 'react-router'
+import themes from '../style/theme'
 
 class BreadcrumbCustom extends Component {
     state = {
@@ -13,34 +13,28 @@ class BreadcrumbCustom extends Component {
             { type: 'warn', checked: false },
             { type: 'white', checked: false },
         ],
-    };
+    }
     componentDidMount() {
         this.state.themes.forEach(val => {
             val.checked && this.setState({
                 theme: themes['theme' + val.type] || null
-            });
+            })
         })
     }
     themeChange = (v) => {
         this.setState({
             themes: this.state.themes.map((t, i) => {
-                (t.type === v.type && (t.checked = !t.checked)) || (t.checked = false);
-                return t;
+                (t.type === v.type && (t.checked = !t.checked)) || (t.checked = false)
+                return t
             }),
             theme: (v.checked && themes['theme' + v.type]) || null
         }, () => {
-            localStorage.setItem('themes', JSON.stringify(this.state.themes));
+            localStorage.setItem('themes', JSON.stringify(this.state.themes))
         })
-    };
+    }
     render() {
-        const themesTag = this.state.themes.map((v, i) => (
-            <div className="pull-left y-center mr-m mb-s" key={i}>
-                <i className={`w-24 mr-s b-a ${v.type}`} />
-                <Switch checked={v.checked} onChange={() => this.themeChange(v)} />
-            </div>
-        ));
-        const first = <Breadcrumb.Item>{this.props.first}</Breadcrumb.Item> || '';
-        const second = <Breadcrumb.Item>{this.props.second}</Breadcrumb.Item> || '';
+        const first = <Breadcrumb.Item>{this.props.first}</Breadcrumb.Item> || ''
+        const second = <Breadcrumb.Item>{this.props.second}</Breadcrumb.Item> || ''
         return (
             <span>
                 <Breadcrumb style={{ margin: '12px 0' }}>
@@ -52,15 +46,15 @@ class BreadcrumbCustom extends Component {
                     ${this.state.theme ?
                         `
                     .custom-theme {
-                        background: ${this.state.theme.header.background} !important;
-                        color: #fff !important;
+                        background: ${this.state.theme.header.background} !important
+                        color: #fff !important
                     }
                     .custom-theme .ant-menu {
-                        background: ${this.state.theme.header.background} !important;
-                        color: #fff !important;
+                        background: ${this.state.theme.header.background} !important
+                        color: #fff !important
                     }
                     .custom-theme .ant-menu-item-group-title {
-                        color: #fff !important;
+                        color: #fff !important
                     }
                     ` : ''
                     }
@@ -70,4 +64,4 @@ class BreadcrumbCustom extends Component {
     }
 }
 
-export default BreadcrumbCustom;
+export default BreadcrumbCustom

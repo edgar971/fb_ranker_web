@@ -6,7 +6,7 @@ import { Tabs } from 'antd';
 import { Button } from 'antd';
 
 import BreadcrumbCustom from '../BreadcrumbCustom';
-import {loadGroup, loadGroupPostReport} from '../../action/groupActions';
+import {loadGroup, loadGroupPostReport} from '../../actions/groupActions';
 import GroupPostRankTable from './GroupPostRankTable';
 
 const TabPane = Tabs.TabPane;

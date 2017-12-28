@@ -3,7 +3,7 @@ import { Layout } from 'antd';
 import './style/index.less';
 import SiderCustom from './components/SiderCustom';
 import HeaderCustom from './components/HeaderCustom';
-import { receiveData } from './action';
+import { receiveData } from './actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 const { Content, Footer } = Layout;

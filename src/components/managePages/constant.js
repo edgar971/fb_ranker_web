@@ -1,0 +1,1 @@
+export const LOAD_SEARCH_PAGES_SUCCESS = 'pageSearch/LOAD_SEARCH_PAGES_SUCCESS';

@@ -1,4 +1,4 @@
-import * as types from '../action/types';
+import * as types from '../actions/types';
 import initialState from './initialState';
 
 export default function groupReducer(state = initialState.group, action) {

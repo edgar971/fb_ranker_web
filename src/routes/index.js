@@ -19,7 +19,7 @@ import Banners from '../components/ui/banners';
 import Drags from '../components/ui/Draggable';
 import Dashboard from '../components/dashboard/Dashboard';
 import Group from '../components/groups/Group';
-import ManagePages from '../components/fb_pages/ManagePages';
+import ManagePages from '../components/managePages';
 import Gallery from '../components/ui/Gallery';
 import NotFound from '../components/pages/NotFound';
 import BasicAnimations from '../components/animation/BasicAnimations';

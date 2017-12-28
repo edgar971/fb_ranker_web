@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import BreadcrumbCustom from '../BreadcrumbCustom';
 import GroupsTable from '../groups/GroupsTable';
-import * as groupActions from '../../action/groupActions';
+import * as groupActions from '../../actions/groupActions';
 import AddGroupModalForm from '../groups/AddGroupModalForm';
 
 class Dashboard extends React.Component {

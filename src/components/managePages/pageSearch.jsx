@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
-import { Icon, Button, Input, AutoComplete } from 'antd';
-import { debounce } from 'throttle-debounce';
+import React, { PureComponent } from 'react'
+import { Icon, Button, Input, AutoComplete } from 'antd'
+import { debounce } from 'throttle-debounce'
 
-const Option = AutoComplete.Option;
+const Option = AutoComplete.Option
 
-class PageSearch extends Component {
-
-
+class PageSearch extends PureComponent {
     constructor(props) {
-        super(props);
-        this.handleSearch = debounce(750, this.handleSearch.bind(this));
+        super(props)
+        this.handleSearch = debounce(750, this.handleSearch.bind(this))
     }
 
     renderOption = (item) => {
@@ -19,23 +17,22 @@ class PageSearch extends Component {
                     <img src={`http://graph.facebook.com/${item.id}/picture`} width="25px" alt="{item.name}" /> - {item.name}
                 </p>
             </Option>
-        );
-    };
+        )
+    }
 
     handleSearch(query) {
-        if(!!query) {
-            this.props.actions.pageSearch(query);
+        if (!!query) {
+            this.props.actions.fetchSearchResults(query)
         }
     }
 
     render() {
-        return(
+        return (
             <AutoComplete
                 className="global-search"
                 size="large"
-
                 style={{ width: '100%' }}
-                dataSource={this.props.pages.map(this.renderOption)}
+                dataSource={this.props.results.map(this.renderOption)}
                 onSearch={this.handleSearch}
                 placeholder="Search for Pages"
                 optionLabelProp="text"
@@ -51,7 +48,6 @@ class PageSearch extends Component {
             </AutoComplete>
         )
     }
-
 }
 
-export default PageSearch;
+export default PageSearch

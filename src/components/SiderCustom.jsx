@@ -55,7 +55,6 @@ class SiderCustom extends Component {
                 style={{ overflowY: 'auto' }}
             >
                 <div className="logo">
-                    <h1>LOGO</h1>
                 </div>
                 <Menu
                     onClick={this.menuClick}

@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import * as type from '../action/type';
+import * as type from '../actions/type';
 import groups from "./groupsReducer"
 import group from "./groupReducer"
 import ajaxCallsInProgress from './ajaxStatusReducer';
-import pages from './searchReducer';
+import pageSearchResults from '../components/managePages/reducers';
 
 const handleData = (state = { isFetching: true, data: {} }, action) => {
     switch (action.type) {
@@ -15,6 +15,7 @@ const handleData = (state = { isFetching: true, data: {} }, action) => {
             return { ...state };
     }
 };
+
 const httpData = (state = {}, action) => {
     switch (action.type) {
         case type.RECEIVE_DATA:
@@ -32,6 +33,6 @@ export default combineReducers({
     httpData,
     groups,
     group,
-    pages,
+    pageSearchResults,
     ajaxCallsInProgress
 });
